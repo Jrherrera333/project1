@@ -1,0 +1,25 @@
+
+
+header{
+box-sizing: border-box;
+/* position: absolute; */
+width: 1440px;
+height: 110px;
+left: 0px;
+top: 18px;
+background: #D9D9D9;
+border: 1px solid #000000;
+box-shadow: 3px 0px 5px 10px rgba(183, 21, 21, 0.5);
+}
+
+.locationInput{
+    box-sizing: border-box;
+   /* position: fixed; */
+    width: 1440px;
+    height: 200px;
+    left: 0px;
+    top: 18px;
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    box-shadow: 3px 0px 5px 10px rgba(183, 21, 21, 0.5);
+    }
