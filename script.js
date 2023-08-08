@@ -3,17 +3,29 @@ console.log("Kyle O'Hara")
 console.log("Bryan Zinsky")
 console.log("Akunna Ottih")
 
+let lat = document.querySelector("floatingInput")
+let long = document.querySelector("floatingPassword")
 
 fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m")
 .then(function(response){
 
-    return response.json()
+    return response.json();
 
 })
-.then(function(catfact) {
-    console.log(catfact)
+.then(function(weather) {
+    console.log(weather)
+    function displayweather(data) {
+        let weather = data.drinks[0];
+        let weatherDiv = document.getElementByID("weather");
+        // cocktail name
+        let weatherName = weather.strDrink;
+        let heading = document.createElement("h1");
+        heading.innerHTML = weatherName;
+        weatherDiv.appendChild(heading);
+      }
 }
 )
+
 
 // fetch("https://pokeapi.co/api/v2/pokemon/ditto")
 // .then(function(response){
