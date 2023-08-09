@@ -15,10 +15,27 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${
     return response.json()
 
 })
-.then(function (button){
-    console.log(button)
+.then(function (weather){
+    console.log(weather)
+    fetchPokemonByWeather()
 })
 })
+
+async function fetchPokemonByWeather() {
+    let searchCriteria = 'sunny';
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+        const data = await response.json();
+        console.log(data.results)
+        let pokeFetch = await fetch(data.results[0].url)
+        let pokeData = await pokeFetch.json()
+        console.log(pokeData.sprites.back_default)
+        return data.results;
+    } catch (error) {
+        console.error('Error fetching Pokémon data:', error);
+        return null;
+    }
+}
 // .then(function(weather) {
 //     console.log(weather)
 //     function displayweather(data) {
