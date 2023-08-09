@@ -2,9 +2,9 @@ console.log("jose")
 console.log("Kyle O'Hara")
 console.log("Bryan Zinsky")
 console.log("Akunna Ottih")
+let weather = document.querySelector("#weather");
 
-
-fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m")
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitudeInput}&longitude=${longitudeInput}&hourly=temperature_2m`)
 .then(function(response){
 
     return response.json()
@@ -12,14 +12,17 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hou
 })
 .then(function(displayCoordinates) {
     console.log(displayCoordinates)
+    weather.textContent = "weather: " + data.hourly.temperature_2m[0];
+    fetchPokemonByWeather()
 }
 )
 
-async function fetchPokemonByWeather(weatherData) {
+async function fetchPokemonByWeather() {
     let searchCriteria = 'sunny';
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
         const data = await response.json();
+        console.log(data)
         return data.results;
     } catch (error) {
         console.error('Error fetching Pokémon data:', error);
@@ -69,6 +72,7 @@ async function searchWeather() {
         alert('Enter valid latitude and longitude.');
     }
 }
+<<<<<<< HEAD
 
 let temp = 20
 
@@ -80,3 +84,5 @@ if (temp < 30 ){
         console.log(data.pokemon[0])
     });
 }
+=======
+>>>>>>> 694d9c24cdd98a0e05c022733a1c01ee2dfaf698
