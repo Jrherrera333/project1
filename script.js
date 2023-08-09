@@ -8,17 +8,17 @@ let long = document.querySelector("#floatingPassword");
 let button = document.querySelector(".button1");
 
 
-button.addEventListener("click", function(){
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
-.then(function(response){
+button.addEventListener("click", function () {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
+        .then(function (response) {
 
-    return response.json()
+            return response.json()
 
-})
-.then(function (weather){
-    console.log(weather)
-    fetchPokemonByWeather()
-})
+        })
+        .then(function (weather) {
+            console.log(weather)
+            fetchPokemonByWeather()
+        })
 })
 
 async function fetchPokemonByWeather() {
@@ -36,6 +36,45 @@ async function fetchPokemonByWeather() {
         return null;
     }
 }
+
+let temp = 34
+
+if (temp > 30) {
+
+    fetch("https://pokeapi.co/api/v2/type/fire")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+            fetch(data.pokemon[0].pokemon.url)
+                .then((response) => response.json())
+                .then((dataFromSecondFetch) => {
+                    console.log(dataFromSecondFetch)
+                    console.log(dataFromSecondFetch.sprite.front_default)
+                    // set image src here
+
+                });
+        });
+} if (temp < 30) {
+    // fetch pokemon by type
+    fetch("https://pokeapi.co/api/v2/type/grass")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            // getting first pokemon from grass fetch
+            // https://pokeapi.co/api/v2/pokemon/1/
+            console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
+            fetch(data.pokemon[0].pokemon.url)
+                .then((reponse) =.response.json())
+                .then((data) => {
+                    //https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/4.png
+                    console.log(data.sprites.front_default)
+                    //set image src here
+                });
+        });
+
+}
+
 // .then(function(weather) {
 //     console.log(weather)
 //     function displayweather(data) {
