@@ -69,3 +69,14 @@ async function searchWeather() {
         alert('Enter valid latitude and longitude.');
     }
 }
+
+let temp = 20
+
+if (temp < 30 ){
+
+    fetch (https://poke////fire)
+    .then((reponse) => response.json())
+    .then((data) => {
+        console.log(data.pokemon[0])
+    });
+}
