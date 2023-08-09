@@ -2,9 +2,9 @@ console.log("jose")
 console.log("Kyle O'Hara")
 console.log("Bryan Zinsky")
 console.log("Akunna Ottih")
+let weather = document.querySelector("#weather");
 
-
-fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m")
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitudeInput}&longitude=${longitudeInput}&hourly=temperature_2m`)
 .then(function(response){
 
     return response.json()
@@ -12,6 +12,7 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hou
 })
 .then(function(displayCoordinates) {
     console.log(displayCoordinates)
+    weather.textContent = "weather: " + data.hourly.temperature_2m[0];
 }
 )
 
