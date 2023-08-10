@@ -6,13 +6,16 @@ console.log("Akunna Ottih")
 let lat = document.querySelector("#floatingInput");
 let long = document.querySelector("#floatingPassword");
 let button = document.querySelector(".button1");
+let poke = document.querySelector(".poke");
 
+let temp = lat + long.querySelector("#weather")
 
 button.addEventListener("click", function(){
 fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
 .then(function(response){
 
     return response.json()
+    weather.textContent = "weather" + data.l
 
 })
 .then(function (weather){
