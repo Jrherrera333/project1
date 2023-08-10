@@ -7,12 +7,15 @@ let image = document.querySelector("#pokeImage");
 let lat = document.querySelector("#floatingInput");
 let long = document.querySelector("#floatingPassword");
 let button = document.querySelector(".button1");
+let poke = document.querySelector(".poke");
+
 
 
 button.addEventListener("click", function () {
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
         .then(function (response) {
 
+    weather.textContent = "weather" + data.l
 
             return response.json()
 
