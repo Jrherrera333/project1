@@ -8,6 +8,7 @@ let lat = document.querySelector("#floatingInput");
 let long = document.querySelector("#floatingPassword");
 let button = document.querySelector(".button1");
 let poke = document.querySelector(".poke");
+let tempD = document.querySelector("#tempDisplay");
 
 
 
@@ -20,22 +21,23 @@ button.addEventListener("click", function () {
         .then(function (weather) {
             console.log(weather.hourly.temperature_2m[0])
             let temp = (weather.hourly.temperature_2m[0])
+            tempD.textContent = (weather.hourly.temperature_2m[0]) * 1.8 + 32 + " °F";
             if (temp > 30) {
 
                 fetch("https://pokeapi.co/api/v2/type/fire")
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data)
-            // Math.floor Math.random
-                        fetch(data.pokemon[0].pokemon.url)
+                        // Math.floor Math.random
+                        fetch(data.pokemon[Math.floor(Math.random() * 10)].pokemon.url)
                             .then((response) => response.json())
                             .then((dataFromSecondFetch) => {
                                 console.log(dataFromSecondFetch)
                                 console.log(dataFromSecondFetch.sprites.front_default)
                                 image.src = (dataFromSecondFetch.sprites.front_default)
-                                
+
                                 // set image src here
-            
+
                             });
                     });
             } if (temp < 30) {
@@ -47,7 +49,7 @@ button.addEventListener("click", function () {
                         // getting first pokemon from grass fetch
                         // https://pokeapi.co/api/v2/pokemon/1/
                         console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
-                        fetch(data.pokemon[0].pokemon.url)
+                        fetch(data.pokemon[Math.floor(Math.random() * 10)].pokemon.url)
                             .then((response) => response.json())
                             .then((data) => {
                                 image.src = (data.sprites.front_default)
@@ -57,10 +59,10 @@ button.addEventListener("click", function () {
                                 //set image src her
                             });
                     });
-            
+
             }
 
-                if (temp < 20) {
+            if (temp < 20) {
                 // fetch pokemon by type
                 fetch("https://pokeapi.co/api/v2/type/water")
                     .then((response) => response.json())
@@ -69,7 +71,7 @@ button.addEventListener("click", function () {
                         // getting first pokemon from grass fetch
                         // https://pokeapi.co/api/v2/pokemon/1/
                         console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
-                        fetch(data.pokemon[0].pokemon.url)
+                        fetch(data.pokemon[Math.floor(Math.random() * 10)].pokemon.url)
                             .then((response) => response.json())
                             .then((data) => {
                                 image.src = (data.sprites.front_default)
@@ -79,8 +81,8 @@ button.addEventListener("click", function () {
                                 //set image src her
                             });
                     });
-            
-            }   if (temp < 10) {
+
+            } if (temp < 10) {
                 // fetch pokemon by type
                 fetch("https://pokeapi.co/api/v2/type/ice")
                     .then((response) => response.json())
@@ -89,7 +91,7 @@ button.addEventListener("click", function () {
                         // getting first pokemon from grass fetch
                         // https://pokeapi.co/api/v2/pokemon/1/
                         console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
-                        fetch(data.pokemon[0].pokemon.url)
+                        fetch(data.pokemon[Math.floor(Math.random() * 10)].pokemon.url)
                             .then((response) => response.json())
                             .then((data) => {
                                 image.src = (data.sprites.front_default)
@@ -99,7 +101,7 @@ button.addEventListener("click", function () {
                                 //set image src her
                             });
                     });
-            
+
             }
             // fetch(data.hourly.temperature_2m[0])
             //     .then((response) => response.json())
@@ -125,45 +127,45 @@ button.addEventListener("click", function () {
 //         return null;
 //     }
 // }
-let temp = 28
+// let temp = 28
 
-if (temp > 30) {
+// if (temp > 30) {
 
-    fetch("https://pokeapi.co/api/v2/type/fire")
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
+//     fetch("https://pokeapi.co/api/v2/type/fire")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             console.log(data)
 
-            fetch(data.pokemon[0].pokemon.url)
-                .then((response) => response.json())
-                .then((dataFromSecondFetch) => {
-                    console.log(dataFromSecondFetch)
-                    console.log(dataFromSecondFetch.sprites.front_default)
-                    image.src = (dataFromSecondFetch.sprites.front_default)// set image src here
+//             fetch(data.pokemon[0].pokemon.url)
+//                 .then((response) => response.json())
+//                 .then((dataFromSecondFetch) => {
+//                     console.log(dataFromSecondFetch)
+//                     console.log(dataFromSecondFetch.sprites.front_default)
+//                     image.src = (dataFromSecondFetch.sprites.front_default)// set image src here
 
-                });
-        });
-} if (temp < 30) {
-    // fetch pokemon by type
-    fetch("https://pokeapi.co/api/v2/type/grass")
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            // getting first pokemon from grass fetch
-            // https://pokeapi.co/api/v2/pokemon/1/
-            console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
-            fetch(data.pokemon[0].pokemon.url)
-                .then((response) => response.json())
-                .then((data) => {
-                    image.src = (data.sprites.front_default)
-                    //https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/4.png
-                    // console.log(data.sprites.front_default)
-                    console.log(data)
-                    //set image src her
-                });
-        });
+//                 });
+//         });
+// } if (temp < 30) {
+//     // fetch pokemon by type
+//     fetch("https://pokeapi.co/api/v2/type/grass")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             console.log(data)
+//             // getting first pokemon from grass fetch
+//             // https://pokeapi.co/api/v2/pokemon/1/
+//             console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
+//             fetch(data.pokemon[0].pokemon.url)
+//                 .then((response) => response.json())
+//                 .then((data) => {
+//                     image.src = (data.sprites.front_default)
+//                     //https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/4.png
+//                     // console.log(data.sprites.front_default)
+//                     console.log(data)
+//                     //set image src her
+//                 });
+//         });
 
-}
+// }
 
 // .then(function(weather) {
 //     console.log(weather)
