@@ -3,42 +3,89 @@ console.log("Kyle O'Hara")
 console.log("Bryan Zinsky")
 console.log("Akunna Ottih")
 
+let image = document.querySelector("#pokeImage");
 let lat = document.querySelector("#floatingInput");
 let long = document.querySelector("#floatingPassword");
 let button = document.querySelector(".button1");
 let poke = document.querySelector(".poke");
 
-let temp = lat + long.querySelector("#weather")
 
-button.addEventListener("click", function(){
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
-.then(function(response){
 
-    return response.json()
+button.addEventListener("click", function () {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.value}&longitude=${long.value}&hourly=temperature_2m`)
+        .then(function (response) {
+
     weather.textContent = "weather" + data.l
 
-})
-.then(function (weather){
-    console.log(weather)
-    fetchPokemonByWeather()
-})
-})
+            return response.json()
 
-async function fetchPokemonByWeather() {
-    let searchCriteria = 'sunny';
-    try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
-        const data = await response.json();
-        console.log(data.results)
-        let pokeFetch = await fetch(data.results[0].url)
-        let pokeData = await pokeFetch.json()
-        console.log(pokeData.sprites.back_default)
-        return data.results;
-    } catch (error) {
-        console.error('Error fetching Pokémon data:', error);
-        return null;
-    }
+        })
+        .then(function (weather) {
+            console.log(weather)
+            fetch(data.hourly.temperature_2m[0])
+                .then((response) => response.json())
+                .then((dataFromWeatherFetch) => {
+                    console.log(dataFromWeatherFetch)
+                    console.log(dataFromWeatherFetch.data.hourly.temperature_2m[0])
+                    // fetchPokemonByWeather()
+                })
+        })
+})
+// async function fetchPokemonByWeather() {
+//     let searchCriteria = 'sunny';
+//     try {
+//         const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+//         const data = await response.json();
+//         console.log(data.results)
+//         let pokeFetch = await fetch(data.results[0].url)
+//         let pokeData = await pokeFetch.json()
+//         console.log(pokeData.sprites.back_default)
+//         return data.results;
+//     } catch (error) {
+//         console.error('Error fetching Pokémon data:', error);
+//         return null;
+//     }
+// }
+let temp = 28
+
+if (temp > 30) {
+
+    fetch("https://pokeapi.co/api/v2/type/fire")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+            fetch(data.pokemon[0].pokemon.url)
+                .then((response) => response.json())
+                .then((dataFromSecondFetch) => {
+                    console.log(dataFromSecondFetch)
+                    console.log(dataFromSecondFetch.sprites.front_default)
+                    image.src = (dataFromSecondFetch.sprites.front_default)// set image src here
+
+                });
+        });
+} if (temp < 30) {
+    // fetch pokemon by type
+    fetch("https://pokeapi.co/api/v2/type/grass")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            // getting first pokemon from grass fetch
+            // https://pokeapi.co/api/v2/pokemon/1/
+            console.log(data.pokemon[0].pokemon.name, data.pokemon[0].pokemon.url)
+            fetch(data.pokemon[0].pokemon.url)
+                .then((response) => response.json())
+                .then((data) => {
+                    image.src = (data.sprites.front_default)
+                    //https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/4.png
+                    // console.log(data.sprites.front_default)
+                    console.log(data)
+                    //set image src her
+                });
+        });
+
 }
+
 // .then(function(weather) {
 //     console.log(weather)
 //     function displayweather(data) {
