@@ -13,6 +13,7 @@
 ## You can find out repository by using:
  ## https://github.com/Jrherrera333/project1.git
 
-## This website was created through 4 team members: Bryan Zinsky, Akunna Ottih, Jose Herrera and Kyle O'Hara. here is a link to the page https://jrherrera333.github.io/project1/
+## This website was created through 4 team members: Bryan Zinsky, Akunna Ottih, Jose Herrera and Kyle O'Hara. 
+## Here is a link to the page https://jrherrera333.github.io/project1/
 ## and here is a pictuere.
 ## ![Alt text](<pokemon pic.png>)
