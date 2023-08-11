@@ -82,7 +82,7 @@ button.addEventListener("click", function () {
                             });
                     });
 
-            } if (temp < 10) {
+            } if (temp < 0) {
                 // fetch pokemon by type
                 fetch("https://pokeapi.co/api/v2/type/ice")
                     .then((response) => response.json())
